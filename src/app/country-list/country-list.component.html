@@ -1,0 +1,94 @@
+<div class="container">
+  <h2 *ngIf="countrys && countrys.length > 0"> {{ title }} </h2>
+
+  <hr>
+  <div class="my-2">
+      <div class="row">
+          <div class="col-md-4">
+              <span class="filter">Country Search :</span>
+              <b> {{ countryFilter }} </b>
+          </div>
+
+          <div class="col-md-8 form-group">
+              <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="countryFilter"
+              />
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+            <span class="filter">Sorted with :</span>
+        </div>
+
+        <div class="col-md-8 form-group">
+          <form>
+            <div class="form-group">
+              <select
+              class="form-control"
+              id="exampleFormControlSelect1"
+              [(ngModel)]="countryClassificator"
+              name="countryClassificator"
+              >
+                <option value="name">Country Name</option>
+                <option value="area">Country Area</option>
+                <option value="population">Country Population</option>
+                <option value="gini">Country Gini</option>
+                <option value="capital">Country Capital</option>
+              </select>
+              <br>
+              <button class="btn btn-primary d-flex" (click)="toggleIsOrder()">
+                <span class="material-icons">
+                  {{ order ? 'arrow_upward' : 'arrow_downward' }}
+                </span>
+                <span class="ml-2">
+                  {{ order ? 'ascending order': 'descending order' }}
+                </span>
+            </button>
+            </div>
+          </form>
+        </div>
+    </div>
+
+  </div>
+  <hr>
+
+  <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-4" *ngFor="let country of filteredCountrys">
+        <div class="card h-100">
+          <img
+              [src]="country.flag"
+              class="card-img-top"
+              [title]="country.name | uppercase"
+              [alt]="country.name"
+          />
+          <div class="card-body">
+            <h5 class="card-title"> {{country.name | titlecase}} </h5>
+            <p class="card-text">
+                Area: {{ country.area }}
+            </p>
+
+            <p class="card-text">
+              Region: {{ country.region }}
+            </p>
+
+            <p class="card-text">
+              Capital: {{ country.capital }}
+            </p>
+
+
+            <p class="card-text">
+                Population: {{ country.population }}
+            </p>
+
+            <p class="card-text">
+              Gini: {{ country.gini }}
+          </p>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
