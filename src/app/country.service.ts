@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CountryService {
 
-  private _url= 'https://restcountries.eu/rest/v2/all';
+  private _url= 'http://127.0.0.1:5000/';
+  //private _url = "https://restcountries.eu/rest/v2/all";
 
   constructor(private http: HttpClient) { }
 
